@@ -1,4 +1,4 @@
-package com.meelickorganicfarm.app.ui.theme
+package com.meelickorganicfarm.app.compose.theme
 
 import androidx.compose.ui.graphics.Color
 
