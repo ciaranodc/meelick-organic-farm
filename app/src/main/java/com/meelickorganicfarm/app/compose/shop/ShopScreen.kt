@@ -6,13 +6,18 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.meelickorganicfarm.app.R
 import com.meelickorganicfarm.app.compose.components.FarmScaffold
 
 @Composable
-fun ShopScreen() {
-    FarmScaffold(topBarTitle = "Shop", scaffoldContent = { ShopScreenContent() })
+fun ShopScreen(bottomNavBar: @Composable () -> Unit) {
+    FarmScaffold(
+        topBarTitle = stringResource(R.string.shop),
+        scaffoldContent = { ShopScreenContent() },
+        bottomNavBar = bottomNavBar
+    )
 }
 
 @Composable

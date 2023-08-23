@@ -5,9 +5,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.meelickorganicfarm.app.compose.home.HomeScreen
 import com.meelickorganicfarm.app.compose.shop.ShopScreen
 import com.meelickorganicfarm.app.compose.theme.MeelickOrganicFarmTheme
 import com.meelickorganicfarm.app.compose.welcome.WelcomeScreen
+import com.meelickorganicfarm.app.navigation.BottomNavigationBar
 import com.meelickorganicfarm.app.navigation.Routes
 
 @Composable
@@ -26,6 +28,7 @@ fun FarmNavHost(navController: NavHostController) {
                 navController.navigate(Routes.shop)
             })
         }
-        composable(Routes.shop) { ShopScreen() }
+        composable(Routes.home) { HomeScreen(bottomNavBar = { BottomNavigationBar(navController) }) }
+        composable(Routes.shop) { ShopScreen(bottomNavBar = { BottomNavigationBar(navController) }) }
     }
 }
