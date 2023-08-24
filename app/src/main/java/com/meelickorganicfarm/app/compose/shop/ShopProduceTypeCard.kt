@@ -18,10 +18,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShopCategoryCard(
+fun ShopProduceTypeCard(
     imageResourceId: Int,
     text: String,
     imageContentDescription: String = "Shop category image",
@@ -39,8 +38,7 @@ fun ShopCategoryCard(
                 imageResourceId = imageResourceId,
                 contentDescription = imageContentDescription,
                 contentScale = ContentScale.FillWidth,
-                modifier = Modifier
-                    .fillMaxWidth()
+                modifier = Modifier.fillMaxWidth()
             )
             Text(
                 text = text,

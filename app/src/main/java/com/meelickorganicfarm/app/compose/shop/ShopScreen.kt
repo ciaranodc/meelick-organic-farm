@@ -12,31 +12,44 @@ import com.meelickorganicfarm.app.R
 import com.meelickorganicfarm.app.compose.components.FarmScaffold
 
 @Composable
-fun ShopScreen(bottomNavBar: @Composable () -> Unit) {
+fun ShopScreen(
+    onCategoryClick: () -> Unit,
+    bottomNavBar: @Composable () -> Unit
+) {
     FarmScaffold(
         topBarTitle = stringResource(R.string.shop),
-        scaffoldContent = { ShopScreenContent() },
+        scaffoldContent = { ShopScreenContent(onCategoryClick = onCategoryClick) },
         bottomNavBar = bottomNavBar
     )
 }
 
 @Composable
-fun ShopScreenContent() {
+fun ShopScreenContent(onCategoryClick: () -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.padding(10.dp),
         contentPadding = PaddingValues(all = 12.dp),
     ) {
         item {
-            ShopCategoryCard(imageResourceId = R.drawable.vegetables,
+            ShopProduceTypeCard(
+                imageResourceId = R.drawable.vegetables,
                 text = "Vegetables",
-                onClick = {})
+                onClick = onCategoryClick
+            )
         }
         item {
-            ShopCategoryCard(imageResourceId = R.drawable.honey, text = "Honey", onClick = {})
+            ShopProduceTypeCard(
+                imageResourceId = R.drawable.honey,
+                text = "Honey",
+                onClick = onCategoryClick
+            )
         }
         item {
-            ShopCategoryCard(imageResourceId = R.drawable.eggs, text = "Eggs", onClick = {})
+            ShopProduceTypeCard(
+                imageResourceId = R.drawable.eggs,
+                text = "Eggs",
+                onClick = onCategoryClick
+            )
         }
     }
 }

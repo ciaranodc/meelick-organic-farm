@@ -6,22 +6,24 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.meelickorganicfarm.app.compose.home.HomeScreen
+import com.meelickorganicfarm.app.compose.shop.ItemsScreen
 import com.meelickorganicfarm.app.compose.shop.ShopScreen
 import com.meelickorganicfarm.app.compose.theme.MeelickOrganicFarmTheme
 import com.meelickorganicfarm.app.compose.welcome.WelcomeScreen
 import com.meelickorganicfarm.app.navigation.BottomNavigationBar
 import com.meelickorganicfarm.app.navigation.Routes
+import com.meelickorganicfarm.app.viewmodels.ShopItemsViewModel
 
 @Composable
-fun FarmApp() {
+fun FarmApp(shopItemsViewModel: ShopItemsViewModel) {
     MeelickOrganicFarmTheme {
         val navController = rememberNavController()
-        FarmNavHost(navController = navController)
+        FarmNavHost(shopItemsViewModel = shopItemsViewModel, navController = navController)
     }
 }
 
 @Composable
-fun FarmNavHost(navController: NavHostController) {
+fun FarmNavHost(shopItemsViewModel: ShopItemsViewModel, navController: NavHostController) {
     NavHost(navController = navController, startDestination = Routes.welcome) {
         composable(Routes.welcome) {
             WelcomeScreen(onEnterClick = {
@@ -29,6 +31,14 @@ fun FarmNavHost(navController: NavHostController) {
             })
         }
         composable(Routes.home) { HomeScreen(bottomNavBar = { BottomNavigationBar(navController) }) }
-        composable(Routes.shop) { ShopScreen(bottomNavBar = { BottomNavigationBar(navController) }) }
+        composable(Routes.shop) { ShopScreen(onCategoryClick = {
+            navController.navigate(Routes.items)
+        },
+            bottomNavBar = { BottomNavigationBar(navController) }) }
+        composable(Routes.items) {
+            ItemsScreen(
+                shopItemsViewModel = shopItemsViewModel,
+                bottomNavBar = { BottomNavigationBar(navController) })
+        }
     }
 }
