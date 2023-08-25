@@ -1,6 +1,5 @@
 package com.meelickorganicfarm.app.compose
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -46,10 +45,6 @@ fun FarmNavHost(
             ShopScreen(
                 shopItemsViewModel = shopItemsViewModel,
                 onItemClick = { shopItem ->
-                    Log.d(
-                        "FarmNavHost", "Navigate to item details screen and show " +
-                                "details for shop item id ${shopItem.id}"
-                    )
                     navController.navigate("${Routes.itemDetails}/${shopItem.id}")
                 },
                 bottomNavBar = { BottomNavigationBar(navController) })

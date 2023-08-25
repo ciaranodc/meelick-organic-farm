@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 class ShopItemsViewModel(
     private val itemRepository: ItemRepository
 ) : ViewModel() {
-
     private val _items = MutableLiveData<List<ShopItem>>()
     val items: LiveData<List<ShopItem>> = _items
 
@@ -23,9 +22,13 @@ class ShopItemsViewModel(
                 val items = itemRepository.getShopItems()
                 _items.value = items
             } catch (e: Exception) {
-                Log.e(this@ShopItemsViewModel::class.java.simpleName, e.message.toString())
+                Log.e(TAG, e.message.toString())
             }
         }
+    }
+
+    companion object {
+        val TAG: String = this::class.java.simpleName
     }
 }
 

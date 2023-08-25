@@ -14,8 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ItemDetailsViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
-    private val itemRepository: ItemRepository
+    savedStateHandle: SavedStateHandle, private val itemRepository: ItemRepository
 ) : ViewModel() {
     private val shopItemId: Int = checkNotNull(savedStateHandle["shopItemId"])
 
@@ -23,17 +22,18 @@ class ItemDetailsViewModel @Inject constructor(
     val item: LiveData<ShopItem> = _item
 
     fun fetchItemDetails() {
-        Log.d(
-            ItemDetailsViewModel::class.java.simpleName,
-            "Fetching item details for id: $shopItemId"
-        )
+        Log.d(TAG, "Fetching item details for id: $shopItemId")
         viewModelScope.launch {
             try {
                 val item = itemRepository.getItemDetails(shopItemId)
                 _item.value = item
             } catch (e: Exception) {
-                Log.e(this@ItemDetailsViewModel::class.java.simpleName, e.message.toString())
+                Log.e(TAG, e.message.toString())
             }
         }
+    }
+
+    companion object {
+        val TAG: String = this::class.java.simpleName
     }
 }
