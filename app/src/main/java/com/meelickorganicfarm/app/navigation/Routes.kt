@@ -4,5 +4,5 @@ object Routes {
     const val welcome = "welcome"
     const val home = "home"
     const val shop = "shop"
-    const val items = "items"
+    const val itemDetails = "itemDetails"
 }

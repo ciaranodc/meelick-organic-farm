@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1001,
+    "name": "onion",
+    "description": "Yellow onion. Medium to large.",
+    "pricePerUnit": 2.00,
+    "unit": "Kg",
+    "quantityRemaining": 100
+  },
+  {
+    "id": 1002,
+    "name": "tomato",
+    "description": "Black krim. Russian heirloom variety. Large beefsteak tomatoes with dark purple to black rich sweet fruits.",
+    "pricePerUnit": 2.00,
+    "unit": "Kg",
+    "quantityRemaining": 20
+  },
+  {
+    "id": 1003,
+    "name": "chilli",
+    "description": "Cayenne chilli pepper. Medium spicy.",
+    "pricePerUnit": 5.00,
+    "unit": "Kg",
+    "quantityRemaining": 10
+  },
+  {
+    "id": 1004,
+    "name": "eggs",
+    "description": "Organic eggs.",
+    "pricePerUnit": 2.00,
+    "unit": "6 eggs",
+    "quantityRemaining": 5
+  },
+  {
+    "id": 1005,
+    "name": "Honey (small jar)",
+    "description": "Pure wild Irish honey.",
+    "pricePerUnit": 6.00,
+    "unit": "1 jar (227g)",
+    "quantityRemaining": 200
+  },
+  {
+    "id": 1006,
+    "name": "Honey (large jar)",
+    "description": "Pure wild Irish honey.",
+    "pricePerUnit": 6.00,
+    "unit": "1 jar (340g)",
+    "quantityRemaining": 200
+  },
+  {
+    "id": 1007,
+    "name": "Organic veg box",
+    "description": "Box of mixed in season organic vegetables.",
+    "pricePerUnit": 15.00,
+    "unit": "1 box",
+    "quantityRemaining": 10
+  }
+]

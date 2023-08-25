@@ -1,6 +1,6 @@
 package com.meelickorganicfarm.app.data
 
-data class Item(
+data class ShopItem(
     val id: Int,
     val name: String,
     val description: String,

@@ -17,13 +17,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.meelickorganicfarm.app.data.ShopItem
+import com.meelickorganicfarm.app.data.getShopItemImageResourceId
+import com.meelickorganicfarm.app.utils.capitalized
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShopProduceTypeCard(
-    imageResourceId: Int,
-    text: String,
-    imageContentDescription: String = "Shop category image",
+fun ShopItemCard(
+    shopItem: ShopItem,
     onClick: () -> Unit
 ) {
     Card(
@@ -34,14 +35,14 @@ fun ShopProduceTypeCard(
             .padding(bottom = 26.dp)
     ) {
         Column(Modifier.fillMaxWidth()) {
-            CategoryImage(
-                imageResourceId = imageResourceId,
-                contentDescription = imageContentDescription,
+            ShopItemImage(
+                imageResourceId = getShopItemImageResourceId(shopItem.name),
+                contentDescription = shopItem.description,
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier.fillMaxWidth()
             )
             Text(
-                text = text,
+                text = shopItem.name.capitalized(),
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 modifier = Modifier
@@ -54,7 +55,7 @@ fun ShopProduceTypeCard(
 }
 
 @Composable
-fun CategoryImage(
+fun ShopItemImage(
     imageResourceId: Int,
     contentDescription: String,
     contentScale: ContentScale,

@@ -4,25 +4,35 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.meelickorganicfarm.app.data.Item
 import com.meelickorganicfarm.app.data.ItemRepository
+import com.meelickorganicfarm.app.data.ShopItem
 import kotlinx.coroutines.launch
 
-class ShopItemsViewModel : ViewModel() {
-    private val repository = ItemRepository()
+class ShopItemsViewModel(
+    private val itemRepository: ItemRepository
+) : ViewModel() {
 
-    private val _items = MutableLiveData<List<Item>>()
-    val items: LiveData<List<Item>> = _items
+    private val _items = MutableLiveData<List<ShopItem>>()
+    val items: LiveData<List<ShopItem>> = _items
 
-    fun fetchVegetableItems() {
+    fun fetchShopItems() {
         viewModelScope.launch {
             try {
-                val items = repository.getVegetableItems()
+                val items = itemRepository.getShopItems()
                 _items.value = items
             } catch (e: Exception) {
-                e.message?.let { Log.e("ShopItemsViewModel", it) }
+                Log.e(this@ShopItemsViewModel::class.java.simpleName, e.message.toString())
             }
         }
+    }
+}
+
+@Suppress("UNCHECKED_CAST")
+class ShopItemsViewModelFactory(private val itemRepository: ItemRepository) :
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return ShopItemsViewModel(itemRepository) as T
     }
 }
