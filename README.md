@@ -1,5 +1,7 @@
 # Meelick Organic Farm
 
+App for learning and playing with Jetpack Compose.
+
 ![welcome_screen](https://github.com/ciaranodc/meelick-organic-farm/assets/1556467/30929ac8-8cb4-459b-8593-1647e22c47df)
 
 
